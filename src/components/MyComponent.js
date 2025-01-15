@@ -1,4 +1,5 @@
 import React from "react";
+import UserInfor from "./UserInfor";
 class MyComponent extends React.Component {
     state = {
         name: 'Quyen',
@@ -24,6 +25,12 @@ class MyComponent extends React.Component {
         })
     }
 
+    handleOnChangeAge = (event) => {
+        this.setState({
+            age: event.target.value
+        })
+    }
+
     handleOnSubmit = (event) => {
         event.preventDefault()
         console.log(this.state)
@@ -32,13 +39,7 @@ class MyComponent extends React.Component {
         return (
             <div>
                 <div>My name is {this.state.name} and i'm {this.state.age}</div>
-                <form onSubmit={(event) => this.handleOnSubmit(event)}>
-                    <input
-                        type="text"
-                        onChange={(event) => this.handleOnChangeInput(event)}
-                    />
-                    <button>Submit</button>
-                </form>
+                <UserInfor />
             </div>
         );
     }
