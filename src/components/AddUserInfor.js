@@ -29,7 +29,7 @@ class AddUserInfor extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="display-infor-container">
                 <div>My name is {this.state.name} and i'm {this.state.age}</div>
                 <form onSubmit={(event) => this.handleOnSubmit(event)}>
                     <label>Your Name: </label>
