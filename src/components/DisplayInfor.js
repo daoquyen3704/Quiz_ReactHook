@@ -9,7 +9,20 @@ class DisplayInfor extends React.Component {
             isShowListUser: !this.state.isShowListUser
         })
     }
-
+    componentDidMount() {
+        console.log('call me component did mount')
+        setTimeout(() => {
+            document.title = 'Eric'
+        }, 3000)
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('>>> call me component update', this.props, prevProps)
+        if (this.props.listUsers !== prevProps.listUsers) {
+            if (this.props.listUsers.length === 5) {
+                alert('You got 5 users')
+            }
+        }
+    }
     render() {
         // destructuring array/obj
         const { listUsers } = this.props;
