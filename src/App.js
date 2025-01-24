@@ -1,24 +1,25 @@
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Header from './components/Header/Header';
 
 const App = () => {
   return (
     <div className="app-container">
-      <Header />
-      <div>
-        Test Link
-        <div>
-          <button>
-            <Link to={`/users`}>go to user page</Link>
-          </button>
+      <div className='header-container'>
+        <Header />
+      </div>
 
-          <button>
-            <Link to={`/admins`}>go to admin page</Link>
-          </button>
+      <div className='main-container'>
+        <div className='sidenav-container'>
+
+        </div>
+        <div className='app-content'>
+          <Outlet />
         </div>
       </div>
+
+
     </div>
   );
 }
