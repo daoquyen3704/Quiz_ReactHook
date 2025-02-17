@@ -121,6 +121,7 @@ const ModalViewUser = (props) => {
                                 className="form-control"
                                 value={username}
                                 onChange={(event) => setUsername(event.target.value)}
+                                disabled
                             />
                         </div>
                         <div className="col-md-4">
@@ -128,7 +129,9 @@ const ModalViewUser = (props) => {
                             <select
                                 className="form-select"
                                 value={role}
-                                onChange={(event) => setRole(event.target.value)}>
+                                onChange={(event) => setRole(event.target.value)}
+                                disabled
+                            >
 
                                 <option value={"USER"}>USER</option>
                                 <option value={"ADMIN"}>ADMIN</option>
@@ -144,6 +147,7 @@ const ModalViewUser = (props) => {
                                 type='file'
                                 id='labelUpload'
                                 hidden
+                                disabled
                                 onChange={(event) => handleUploadImage(event)}
                             />
                         </div>

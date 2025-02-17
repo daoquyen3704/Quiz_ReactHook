@@ -61,16 +61,6 @@ const ModalUpdateUser = (props) => {
   };
 
   const handleSubmitCreateUser = async () => {
-    //validate
-    // const isValidEmail = validateEmail(email);
-    // if(!isValidEmail) {
-    //   toast.error("Invalid Email");
-    //   return;
-    // }
-
-
-
-
 
     let data = await putUpdateUser(dataUpdate.id, username, role, image);
     // console.log("component res: ", res)
