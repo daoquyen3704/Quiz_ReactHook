@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { toast } from 'react-toastify';
 import { deleteUser } from '../../../services/apiService';
 
+
 const ModalDeleteUser = (props) => {
     const { show, setShow, dataDelete } = props;
 
