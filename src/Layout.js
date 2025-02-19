@@ -12,6 +12,7 @@ import {
     Routes,
     Route
 } from "react-router-dom";
+import Register from './components/Auth/Register';
 const Layout = (props) => {
     return (
         <>
@@ -27,6 +28,7 @@ const Layout = (props) => {
                 </Route>
 
                 <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
 
             </Routes>
 
