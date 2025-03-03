@@ -13,9 +13,10 @@ import sidebarBg from '../../assets/bg2.jpg';
 import { DiReact } from "react-icons/di";
 import { MdDashboard } from "react-icons/md";
 import './SideBar.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SideBar = (props) => {
+    const navigate = useNavigate();
     const { image, collapsed, toggled, handleToggleSidebar } = props;
 
     return (
@@ -40,8 +41,11 @@ const SideBar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        <DiReact size={'3em'} color={"00bfff"}/>
-                        <span>Hoi Dan IT</span> 
+                        <DiReact size={'3em'} color={"00bfff"} />
+                        <span
+                            onClick={() => navigate('/')}
+                        >Hoi Dan IT
+                        </span>
                     </div>
                 </SidebarHeader>
 
@@ -52,7 +56,7 @@ const SideBar = (props) => {
                             suffix={<span className="badge red">Main</span>}
                         >
                             Dashboard
-                            <Link to="/admins"/>
+                            <Link to="/admins" />
                         </MenuItem>
                         {/* <MenuItem icon={<FaGem />}> components </MenuItem> */}
                     </Menu>
@@ -63,10 +67,13 @@ const SideBar = (props) => {
                             title={"Features"}
                         >
                             <MenuItem>
-                            Quản Lý Users
-                            <Link to="/admins/manage-users"/>
+                                Quản Lý Users
+                                <Link to="/admins/manage-users" />
                             </MenuItem>
-                            <MenuItem>Quản Lý Bài Quiz</MenuItem>
+                            <MenuItem>
+                                Quản Lý Bài Quiz
+                                <Link to="/admins/manage-quizzes" />
+                            </MenuItem>
                             <MenuItem>Quản Lý Câu Hỏi</MenuItem>
                         </SubMenu>
 
