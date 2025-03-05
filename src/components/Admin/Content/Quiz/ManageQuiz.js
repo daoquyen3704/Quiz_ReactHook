@@ -3,6 +3,9 @@ import Select from 'react-select';
 import { FcPlus } from "react-icons/fc";
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { postCreateNewQuiz } from '../../../../services/apiService';
+import { toast } from 'react-toastify';
+
 
 
 
@@ -14,7 +17,7 @@ const options = [
 const ManageQuiz = (props) => {
     const [previewImage, setPreviewImage] = useState("");
     const [image, setImage] = useState(null);
-    const [type, setType] = useState("EASY");
+    const [type, setType] = useState("");
 
 
 
@@ -30,6 +33,23 @@ const ManageQuiz = (props) => {
         }
         else {
             // setPreviewImage("")
+        }
+    }
+    const handleSubmitQuiz = async () => {
+        // validate
+        if (!name || !description) {
+            toast.error("Name/Description is required");
+            return;
+        }
+        let res = await postCreateNewQuiz(description, name, type?.value, image);
+        if (res && res.EC === 0) {
+            toast.success(res.EM);
+            setName('');
+            setDescription('');
+            setImage('');
+
+        } else {
+            toast.error(res.EM);
         }
     }
     return (
@@ -63,8 +83,8 @@ const ManageQuiz = (props) => {
                     </div>
                     <div className='my-3'>
                         <Select
-                            value={type}
-                            // onChange={this.handleChange}
+                            defaultValue={type}
+                            onChange={setType}
                             options={options}
                             placeholder={"Quiz type..."}
                         />
@@ -90,6 +110,12 @@ const ManageQuiz = (props) => {
                                 <span>Preview Image</span>
                             }
                         </div>
+                    </div>
+                    <div className='mt-3'>
+                        <button
+                            className='btn btn-warning'
+                            onClick={() => handleSubmitQuiz()}
+                        >Save</button>
                     </div>
                 </fieldset>
             </div>
